@@ -34,4 +34,4 @@ prompt adam2
 autoload -Uz compinit
 compinit
 
------------------------------
+----------------------------
