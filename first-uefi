@@ -1,0 +1,72 @@
+setfont ter-v16n
+
+-------------------------
+
+iwctl
+device list
+station wlan0 get-networks
+station wlan0 connect <BSSID>
+
+------------------------
+
+fdisk -l 
+
+------------------------
+
+# for UEFI
+mkfs.fat -F 32 /dev/sdxY 
+or
+mkfs.vfat /dev/sdxY
+
+# for root
+mkfs.ext4 /dev/sdxY
+
+# for swap
+mkswap /dev/sdxY
+
+------------------------
+
+mount /dev/sdxY /mnt
+
+mkdir -p /mnt/boot/efi
+mount /dev/sdxY /mnt/boot/efi
+or 
+mount --mkdir /dev/sdxY /mnt/boot/efi
+
+swapon /dev/sdxY
+
+-------------------------
+
+pacman.conf
+
+-------------------------
+
+pacstrap -K /mnt base linux linux-firmware
+
+-------------------------
+
+
+
+-------------------------
+
+pacman -S grub efibootmgr networkmanager vim
+
+-------------------------
+=========================
+-------------------------
+
+# packages
+amd-ucode or intel-ucode
+man-db, man-pages, texinfo
+base-devel
+linux-headers
+bash-completion
+xorg
+
+-------------------------
+# fonts
+ttf-ubuntu-font-family
+ttf-hack
+ttf-dejavu
+ttf-opensans
+-------------------------
